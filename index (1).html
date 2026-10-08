@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Justine Paulo Valdez · Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#111827; --muted:#5B6472; --line:#E3E6EB; --soft:#F3F5F7; --accent:#0F766E; --on-accent:#FFFFFF;
+  --font:"Manrope","Segoe UI",Arial,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0F1317;--ink:#F1F3F5;--muted:#A3ACB8;--line:#262D35;--soft:#171C22;--accent:#4FD1C5;--on-accent:#0F1317}
+}
+:root[data-theme="dark"]{--bg:#0F1317;--ink:#F1F3F5;--muted:#A3ACB8;--line:#262D35;--soft:#171C22;--accent:#4FD1C5;--on-accent:#0F1317}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.65 var(--font);-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-.015em}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:800}
+h2{font-size:1.7rem;font-weight:800;margin-bottom:22px}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0 0 1em;max-width:64ch}
+a{color:var(--accent)}
+button{font:inherit;color:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+.muted{color:var(--muted)}
+
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:56px}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:.95rem}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+nav strong{font-weight:800}
+@media (max-width:640px){nav ul li:nth-child(2),nav ul li:nth-child(3){display:none}nav ul{gap:16px}}
+.certs{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.cert{display:grid;grid-template-columns:130px 1fr;gap:20px;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:20px 22px}
+@media (max-width:560px){.cert{grid-template-columns:1fr;gap:4px}}
+.cert .when{color:var(--muted);font-weight:500}
+.cert h3{font-size:1.1rem}
+.cert .by{color:var(--muted);margin:2px 0 8px;font-size:.95rem}
+.cert p{margin:0 0 .5em;font-size:.97rem}
+.cert a{font-weight:700;font-size:.95rem}
+
+.intro{padding:72px 0 56px}
+.intro p{font-size:1.2rem;color:var(--muted);margin:16px 0 26px}
+.links{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:10px 20px;border-radius:8px;border:1.5px solid var(--accent);font-weight:700;text-decoration:none;font-size:.97rem}
+.btn.fill{background:var(--accent);color:var(--on-accent)}
+button.btn{font:inherit;font-weight:700;font-size:.97rem;background:transparent;color:var(--accent);cursor:pointer}
+button.btn[hidden]{display:none}
+.cv-msg{margin:12px 0 0;font-size:.93rem;color:var(--muted);min-height:1.4em}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+
+/* slideshow */
+.show{border:1px solid var(--line);border-radius:14px;background:var(--soft);overflow:hidden}
+.slide{display:none;padding:36px 32px;min-height:280px}
+.slide.on{display:block}
+.slide .meta{color:var(--muted);font-size:.95rem;margin:6px 0 18px}
+.slide .lead{font-size:1.1rem;font-weight:500}
+.controls{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-top:1px solid var(--line);background:var(--bg)}
+.nb{border:1.5px solid var(--line);background:transparent;border-radius:8px;padding:8px 16px;font-weight:700}
+.nb:hover{border-color:var(--accent);color:var(--accent)}
+.dots{display:flex;gap:8px;align-items:center}
+.dot{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--muted);background:transparent;padding:0}
+.dot[aria-current="true"]{background:var(--accent);border-color:var(--accent)}
+.count{font-size:.9rem;color:var(--muted);margin:10px 2px 0}
+@media (max-width:520px){.slide{padding:26px 20px}.nb{padding:8px 12px}}
+
+.job{display:grid;grid-template-columns:110px 1fr;gap:20px}
+@media (max-width:560px){.job{grid-template-columns:1fr;gap:2px}}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.tags li{background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-weight:500}
+.group{margin-bottom:20px}
+.group:last-child{margin-bottom:0}
+.group h3{font-size:.98rem;color:var(--muted);font-weight:700;margin-bottom:10px}
+footer{padding:22px 0 32px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <strong>Justine Paulo Valdez</strong>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#stack">Tech stack</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <header class="intro">
+    <div class="wrap">
+      <h1>Justine Paulo Valdez</h1>
+      <p>Software developer and 4th-year IT student at PHINMA University of Pangasinan, looking for an internship where I can build, learn and contribute to real projects.</p>
+      <div class="links">
+        <a class="btn fill" href="#projects">View projects</a>
+        <a class="btn" href="#contact">Contact me</a>
+        <a class="btn" href="Justine-Paulo-Valdez-CV.pdf" download>Download CV (PDF)</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <div class="show" id="show" role="region" aria-roledescription="carousel" aria-label="Projects" tabindex="0">
+        <div id="slides"></div>
+        <div class="controls">
+          <button class="nb" id="prev" type="button">Previous</button>
+          <div class="dots" id="dots"></div>
+          <button class="nb" id="next" type="button">Next</button>
+        </div>
+      </div>
+      <p class="count" id="count" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+      <div class="job">
+        <div class="muted">2023</div>
+        <div>
+          <h3>Work immersion, Municipality of Sta. Maria</h3>
+          <p style="margin-top:8px">Applied IT and digital editing skills on real projects. I handled content tasks, assisted with technical needs, and strengthened my problem-solving. It pushed me toward a career in technology.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="wrap">
+      <h2>Tech stack</h2>
+      <div class="group"><h3>Languages</h3><ul class="tags"><li>Python</li><li>Java</li><li>Kotlin</li><li>JavaScript</li><li>HTML/CSS</li><li>PHP</li><li>SQL</li></ul></div>
+      <div class="group"><h3>Frameworks</h3><ul class="tags"><li>Jetpack Compose</li></ul></div>
+      <div class="group"><h3>Databases, servers and cloud</h3><ul class="tags"><li>MySQL</li><li>MongoDB</li><li>Firebase</li><li>Apache</li><li>AWS</li></ul></div>
+      <div class="group"><h3>Tools and practice</h3><ul class="tags"><li>Version control</li><li>Software development</li><li>Cybersecurity</li><li>Troubleshooting</li><li>Logical thinking</li></ul></div>
+    </div>
+  </section>
+
+  <section id="certificates">
+    <div class="wrap">
+      <h2>Certificates</h2>
+      <ul class="certs">
+        <li class="cert">
+          <div class="when">Oct 6, 2026</div>
+          <div>
+            <h3>Certified Cybersecurity Professional (CCP)</h3>
+            <div class="by">Appkademiya</div>
+            <p>Certification module completed and digitally verified.</p>
+            <a href="https://appkademiya.online/verify/CERT-CCP-CYBERSECURITY-PROFESSIONAL-20261006-86CB6C16FD8C">Verify online</a>
+          </div>
+        </li>
+        <li class="cert">
+          <div class="when">Mar 18, 2026</div>
+          <div>
+            <h3>Ethical Hacker</h3>
+            <div class="by">Cisco Networking Academy</div>
+            <p>Completed through the Cisco Networking Academy program.</p>
+          </div>
+        </li>
+        <li class="cert">
+          <div class="when">Dec 16, 2025</div>
+          <div>
+            <h3>Introduction to Cybersecurity</h3>
+            <div class="by">Cisco Networking Academy</div>
+            <p>Completed through the Cisco Networking Academy program.</p>
+          </div>
+        </li>
+        <li class="cert">
+          <div class="when">Nov 4, 2025</div>
+          <div>
+            <h3>SQL Injection Attacks</h3>
+            <div class="by">EC-Council Continuing Education</div>
+            <p>Course completion, 1 hour.</p>
+          </div>
+        </li>
+        <li class="cert">
+          <div class="when">Oct 23, 2025</div>
+          <div>
+            <h3>EC004 Python-AWS Course</h3>
+            <div class="by">Zuitt Learning Institute</div>
+            <p>80 hours, July 7 to October 23, 2025. Covered Python fundamentals, Django fundamentals, AWS EC2, AWS S3 and AWS Lambda.</p>
+          </div>
+        </li>
+        <li class="cert">
+          <div class="when">Apr 8, 2024</div>
+          <div>
+            <h3>Learn HTML and CSS from Beginning to Advanced</h3>
+            <div class="by">Udemy · Marcus Menti, Zechariah Tech</div>
+            <p>5 total hours.</p>
+            <a href="https://ude.my/UC-5a099f4b-305f-4317-a50e-129b2602befe">Verify on Udemy</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p>Tayug, Philippines<br><a href="mailto:valdezjustinepaolo55@gmail.com">valdezjustinepaolo55@gmail.com</a></p>
+      <div class="links">
+        <a class="btn fill" href="mailto:valdezjustinepaolo55@gmail.com">Send an email</a>
+        <a class="btn" href="Justine-Paulo-Valdez-CV.pdf" download>Download CV (PDF)</a>
+        <a class="btn" href="https://github.com/ryuuushura">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/justine-paulo-valdez-145699222/">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 Justine Paulo Valdez</div></footer>
+
+<script>
+(function(){
+  var P=[
+    {t:'Tapt: NFC classroom attendance',m:'Thesis · 2026 · JGMNHS',s:'An offline-first, cloud-synchronized NFC attendance platform with teacher-side photo validation and automated DepEd SF2 report generation.',d:'Scanning drops from 10–15 seconds to 1–2 seconds per student, reclaiming 6–8 minutes per class. Monthly SF2 compilation drops from 2–3 hours to under 1 minute, proxy attendance falls below 0.5%, and data logging accuracy reaches 99.9%.'},
+    {t:'Sanitary Permit and Health Certificate Management System',m:'Solo project · May–Jun 2026 · Municipality of Tayug Health Office',s:'A system that replaces the manual permit and certificate process with a faster, more accurate, lower-cost one.',d:'Delivers a 75–99% improvement in processing speed, an 85% reduction in error rate, a 90% reduction in operational costs, and a 60–70% reduction in staff workload.'},
+    {t:'Otaku Store',m:'Solo project · Mar 2026',s:'An online shop for anime fans to browse and buy anime figures and manga.',d:'One place to shop, instead of digging through five different sketchy sites.'},
+    {t:'PUCU Event Calendar',m:'Team project · Sep 2024',s:'A school event calendar.',d:'Organizations have their own dashboard, admins manage users, and events show as upcoming, pending or recently finished.'},
+    {t:'ITE 393 Campus App',m:'Group project · Sep 2024',s:'A campus companion app.',d:'Sign-in, student profiles, a floor-by-floor building map, events, courses and modules.'},
+    {t:'E-ATS Game App',m:'Team project · 2023',s:'A game app built with a team.',d:''}
+  ];
+  var slides=document.getElementById('slides'), dots=document.getElementById('dots'), count=document.getElementById('count'), i=0, els=[], dEls=[];
+  P.forEach(function(p,k){
+    var s=document.createElement('article');s.className='slide';
+    s.setAttribute('role','group');s.setAttribute('aria-roledescription','slide');s.setAttribute('aria-label',(k+1)+' of '+P.length);
+    s.innerHTML='<h3>'+p.t+'</h3><div class="meta">'+p.m+'</div><p class="lead">'+p.s+'</p>'+(p.d?'<p>'+p.d+'</p>':'');
+    slides.appendChild(s);els.push(s);
+    var d=document.createElement('button');d.type='button';d.className='dot';d.setAttribute('aria-label','Go to project '+(k+1)+': '+p.t);
+    d.addEventListener('click',function(){go(k)});dots.appendChild(d);dEls.push(d);
+  });
+  function go(n){
+    i=(n+P.length)%P.length;
+    els.forEach(function(e,k){e.classList.toggle('on',k===i)});
+    dEls.forEach(function(e,k){if(k===i)e.setAttribute('aria-current','true');else e.removeAttribute('aria-current')});
+    count.textContent='Project '+(i+1)+' of '+P.length;
+  }
+  document.getElementById('prev').addEventListener('click',function(){go(i-1)});
+  document.getElementById('next').addEventListener('click',function(){go(i+1)});
+  var show=document.getElementById('show');
+  show.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){go(i+1);e.preventDefault()}
+    if(e.key==='ArrowLeft'){go(i-1);e.preventDefault()}
+  });
+  var x0=null;
+  show.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  show.addEventListener('touchend',function(e){
+    if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;
+    if(Math.abs(dx)>50)go(dx<0?i+1:i-1);
+  },{passive:true});
+  go(0);
+})();
+</script>
+
+</body>
+</html>
